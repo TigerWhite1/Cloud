@@ -1,0 +1,302 @@
+.browser {
+  position: relative;
+  width: 90%;
+  max-width: 50em;
+  min-height: 20em;
+  margin: 0 auto;
+  background: white;
+  overflow: hidden;
+  box-shadow: 0 0.5em 2em 0 rgba(0, 0, 0, 0.2);
+}
+.browser h1 {
+  margin: 0;
+  padding: 0.5em 0;
+  background: #269dd9;
+  font-size: 1em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: white;
+}
+.browser ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.browser .folders {
+  position: absolute;
+  top: 3.125em;
+  bottom: 0;
+  width: 12.5em;
+  background: #444;
+  font-size: 0.8em;
+  color: white;
+  z-index: 9999;
+}
+.browser .folders li {
+  display: block;
+}
+.browser .folders li a {
+  display: block;
+  padding: 0.625em;
+  border-left: 5px solid #e8a17d;
+  text-decoration: none;
+  color: inherit;
+}
+.browser .folders li:nth-child(even) a {
+  border-left: 5px solid #7dc4e8;
+  background: #555;
+}
+.browser .folders li a:hover, .browser .folders li a.active {
+  border-left: 5px solid #e8a17d;
+  background: #e8a17d;
+  color: white;
+}
+.browser .folders i {
+  margin-right: 0.5em;
+}
+.browser .files {
+  position: relative;
+  height: 100%;
+  padding-left: 10em;
+}
+.browser .files .placeholder {
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 0.5em);
+  font-size: 10em;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: black;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  transform: translate(-50%, -50%);
+  animation: rockit 1s infinite ease-in-out;
+}
+.browser .files .placeholder.active {
+  opacity: 0.05;
+}
+.browser .files .files__actions {
+  max-height: 0;
+  background: #7dc4e8;
+  font-size: 0.75em;
+  color: white;
+  overflow: hidden;
+  transition: max-height 0.2s ease-in-out;
+}
+.browser .files .files__actions.active {
+  max-height: 3em;
+}
+.browser .files .files__actions li {
+  display: block;
+  float: left;
+}
+.browser .files .files__actions li a {
+  display: block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  color: inherit;
+}
+.browser .files .files__actions li a:hover, .browser .files .files__actions li a.active {
+  background: white;
+  color: #269dd9;
+}
+.browser .files__list {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+.browser .files__list.active {
+  opacity: 1;
+}
+.browser .files__list li {
+  position: relative;
+  transition: transform 0.2s ease-in-out;
+  transform: translateX(-3.5em);
+}
+.browser .files__list li:hover, .browser .files__list li.active {
+  transform: translateX(0);
+}
+.browser .files__list li:nth-child(even) a {
+  background: #f7f7f7;
+}
+.browser .files__list li a {
+  display: block;
+  width: calc(100% + 3.5em);
+  padding: 1em 1em 1em 4.5em;
+  background: white;
+  text-decoration: none;
+  color: inherit;
+}
+.browser .files__list li a i {
+  width: 1.5em;
+  margin-right: 0.5em;
+  text-align: center;
+}
+.browser .files__list li > .thumbnail {
+  position: absolute;
+  width: 3.5em;
+  height: 3.5em;
+}
+.browser .files__list li > .thumbnail img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+}
+.browser .files__list li > .thumbnail > i {
+  width: 100%;
+  background: #e8a17d;
+  font-size: 1.5em;
+  line-height: 2.35;
+  text-align: center;
+  color: white;
+}
+.browser .files__list li > .thumbnail .zoom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+.browser .files__list li > .thumbnail .zoom:hover {
+  opacity: 1;
+}
+.browser .files__list li > .thumbnail .zoom i {
+  width: 100%;
+  font-size: 1.5em;
+  line-height: 2.3333;
+  text-align: center;
+  color: white;
+}
+.browser .files__list .settings {
+  width: calc(100% + 4.6667em);
+  max-height: 0;
+  padding: 0 1em 0 6em;
+  background: #7dc4e8;
+  font-size: 0.75em;
+  color: white;
+  transition: max-height 0.2s ease-in-out;
+}
+.browser .files__list .settings.active {
+  max-height: 3em;
+}
+.browser .files__list .settings label {
+  display: inline-block;
+  padding: 0.5em;
+  background: #269dd9;
+}
+.browser .files__list .settings input {
+  margin: 0 1em;
+  border: 1px solid #269dd9;
+  color: #222;
+}
+.browser .files__list .settings .insert {
+  display: inline-block;
+  margin-left: 1em;
+  padding: 0.5em;
+  background: white;
+  color: #269dd9;
+  cursor: pointer;
+}
+.browser .files__list .settings .insert:hover {
+  background: #269dd9;
+  color: white;
+}
+
+/** PAGE STYLES **/
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+/*html {
+  font-size: 62.5%;
+}*/
+
+body {
+  font-family: "proxima-nova", sans-serif;
+  font-size: 2em;
+  line-height: 1.5;
+  font-weight: 300;
+  color: #222;
+  overflow-x: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+h1 {
+  margin: 0;
+  font-size: 3em;
+  font-weight: bold;
+  line-height: 1;
+  text-align: center;
+  color: #269dd9;
+}
+
+h2 {
+  margin: 0 0 0.5em;
+  font-size: 1.5em;
+  font-weight: normal;
+  text-align: center;
+  text-transform: lowercase;
+  color: #e8a17d;
+}
+
+h3 {
+  margin: 1em 0;
+  font-family: "proxima-nova", sans-serif;
+  font-size: 2em;
+  font-weight: 100;
+  text-transform: uppercase;
+}
+
+/*.container {
+  visibility: hidden;
+  padding: 1em 0;
+}*/
+
+.no-js .container,
+.container.tk-loaded {
+  visibility: visible;
+}
+
+.cf:before, .browser .files .files__actions:before,
+.cf:after,
+.browser .files .files__actions:after {
+  content: " ";
+  display: table;
+
+}
+
+.cf:after, .browser .files .files__actions:after {
+  clear: both;
+}
+
+.cf, .browser .files .files__actions {
+  *zoom: 1;
+}
+
+@keyframes rockit {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  25% {
+    transform: translate(-48%, -48%) rotate(2deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(-2deg);
+  }
+  75% {
+    transform: translate(-52%, -52%) rotate(2deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
